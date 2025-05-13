@@ -107,3 +107,6 @@ app.delete('/api/users/deleteuser', async (req, res) => {
 
 // Start the server
 app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));
+
+module.exports = app;
+module.exports.handler = serverless(app);
