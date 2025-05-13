@@ -10,7 +10,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://ramasamy:ramasamy123@trainees.cweud9i.mongodb.net/kumarDB', {
+mongoose.connect('process.env.MONGO_DB_URL', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -106,5 +106,5 @@ app.delete('/api/users/deleteuser', async (req, res) => {
 });
 
 // Start the server
-const PORT = 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+module.exports = app;
+module.exports.handler = serverless(app);
